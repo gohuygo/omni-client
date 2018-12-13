@@ -28,15 +28,13 @@ class Navbar extends Component {
             </Menu.Item>
             <Menu.Menu position='right'>
               <Menu.Item >
-                <Button primary inverted onClick={()=>{ this.signupModal.handleOpen() }}>
-                  Signup
-                </Button>
+                <SignupModal/>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
         </MenuWrapper>
 
-        <SignupModal ref={instance => { this.signupModal = instance }}/>
+
       </div>
     )
   }

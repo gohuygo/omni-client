@@ -18,7 +18,10 @@ class SignupModal extends Component {
 
   render() {
     return(
-      <Modal open={this.state.modalOpen} onClose={this.handleClose} >
+      <Modal
+        trigger={<Button primary inverted onClick={()=>{ this.handleOpen() }}>Signup</Button>}
+        open={this.state.modalOpen}
+        onClose={this.handleClose} >
         <Modal.Header>Create A New Account</Modal.Header>
         <Modal.Content>
           <Modal.Description>
