@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
 import styled from 'styled-components'
 
+
+import SignupModal from './SignupModal'
+
 const MenuWrapper = styled.div`
   border-bottom: 1px solid #e6e4e4;
 `
@@ -25,13 +28,15 @@ class Navbar extends Component {
             </Menu.Item>
             <Menu.Menu position='right'>
               <Menu.Item >
-                <Button primary inverted onClick={()=>{ console.log("signup") }}>
+                <Button primary inverted onClick={()=>{ this.signupModal.handleOpen() }}>
                   Signup
                 </Button>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
         </MenuWrapper>
+
+        <SignupModal ref={instance => { this.signupModal = instance }}/>
       </div>
     )
   }
