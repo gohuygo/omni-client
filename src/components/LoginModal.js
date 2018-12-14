@@ -2,55 +2,49 @@ import React, { Component } from 'react'
 import { Button, Modal, Icon, Form} from 'semantic-ui-react'
 
 import axios from 'axios'
+import { withCookies } from 'react-cookie';
 
-class SignupModal extends Component {
+
+class LoginModal extends Component {
   state = {
     modalOpen: false,
     email: null,
-    name: null,
     password: null,
   }
 
   handleOpen  = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
 
-  handleSignup = async () => {
+  handleLogin = async () => {
     const { name, email, password } = this.state
+    const { cookies } = this.props
 
     try{
-      const response = await axios.post('http://localhost:8080/register', {
-        name: name,
+      const res = await axios.post('http://localhost:8080/login', {
         email: email,
         password: password,
       })
 
-      if(response.status == 200){
-        this.handleClose()
+      if(res.status == 200){
+        cookies.set('jwt', res.data.jwt)
+        cookies.set('email', res.data.email)
       }
 
     } catch (err) {
       console.log(err)
     }
-
-
-
   }
 
   render() {
     return(
       <Modal
-        trigger={<Button primary inverted onClick={()=>{ this.handleOpen() }}>Signup</Button>}
+        trigger={<Button primary inverted onClick={()=>{ this.handleOpen() }}>Login</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose} >
-        <Modal.Header>Create A New Account</Modal.Header>
+        <Modal.Header>Login</Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <Form>
-              <Form.Field required>
-                <label>Name</label>
-                <input placeholder='Name' onChange={(e) => {this.setState({name: e.target.value})}} />
-              </Form.Field>
-
               <Form.Field required>
                 <label>Email</label>
                 <input placeholder='Email' onChange={(e) => {this.setState({email: e.target.value})}} />
@@ -65,8 +59,8 @@ class SignupModal extends Component {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button color='green' onClick={this.handleSignup} inverted>
-            <Icon name='checkmark'/> Signup
+          <Button color='green' onClick={this.handleLogin} inverted>
+            <Icon name='checkmark'/> Login
           </Button>
 
           <Button color='red' onClick={this.handleClose} inverted>
@@ -78,4 +72,4 @@ class SignupModal extends Component {
   }
 }
 
-export default SignupModal
+export default withCookies(LoginModal)

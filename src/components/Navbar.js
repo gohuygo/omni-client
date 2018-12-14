@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
 import styled from 'styled-components'
 
-
+import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
 
 const MenuWrapper = styled.div`
@@ -29,6 +29,9 @@ class Navbar extends Component {
             <Menu.Menu position='right'>
               <Menu.Item >
                 <SignupModal/>
+              </Menu.Item>
+              <Menu.Item >
+                <LoginModal/>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
