@@ -28,6 +28,7 @@ class LoginModal extends Component {
       if(res.status == 200){
         cookies.set('jwt', res.data.jwt)
         cookies.set('email', res.data.email)
+        this.handleClose();
       }
 
     } catch (err) {

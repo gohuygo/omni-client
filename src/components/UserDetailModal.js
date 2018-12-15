@@ -14,12 +14,12 @@ class UserDetailModal extends Component {
   handleClose = () => this.setState({ modalOpen: false })
 
   handleLogin = async () => {
-    console.log(process.env)
     try{
+
       const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
         withCredentials: true,
       })
-      console.log(res);
+
       if(res.status == 200){
         console.log("success get_info", res)
       }
