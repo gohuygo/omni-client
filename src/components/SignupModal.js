@@ -18,7 +18,7 @@ class SignupModal extends Component {
     const { name, email, password } = this.state
 
     try{
-      const response = await axios.post('http://localhost:8080/register', {
+      const response = await axios.post(process.env.REACT_APP_SERVER_URL+'/register', {
         name: name,
         email: email,
         password: password,

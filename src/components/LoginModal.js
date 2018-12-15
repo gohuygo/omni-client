@@ -20,7 +20,7 @@ class LoginModal extends Component {
     const { cookies } = this.props
 
     try{
-      const res = await axios.post('http://localhost:8080/login', {
+      const res = await axios.post(process.env.REACT_APP_SERVER_URL + '/login', {
         email: email,
         password: password,
       })
