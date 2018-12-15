@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
+import UserDetailModal from './UserDetailModal'
 
 const MenuWrapper = styled.div`
   border-bottom: 1px solid #e6e4e4;
@@ -32,6 +33,9 @@ class Navbar extends Component {
               </Menu.Item>
               <Menu.Item >
                 <LoginModal/>
+              </Menu.Item>
+              <Menu.Item >
+                <UserDetailModal/>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
