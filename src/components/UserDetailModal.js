@@ -17,16 +17,15 @@ class UserDetailModal extends Component {
     const { cookies } = this.props
 
     try{
-      const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
-        params:{
-          jwt: cookies.get('jwt')
-        }
-      })
-
-      // Does not work on Heroku
       // const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
-      //   withCredentials: true,
+      //   params:{
+      //     jwt: cookies.get('jwt')
+      //   }
       // })
+
+      const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
+        withCredentials: true,
+      })
 
       if(res.status === 200){
         console.log("success get_info", res)
