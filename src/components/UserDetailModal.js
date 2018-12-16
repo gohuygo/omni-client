@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, Icon, Form} from 'semantic-ui-react'
+import { Button, Modal, Icon } from 'semantic-ui-react'
 
 import axios from 'axios'
 import { withCookies } from 'react-cookie';
@@ -14,13 +14,21 @@ class UserDetailModal extends Component {
   handleClose = () => this.setState({ modalOpen: false })
 
   handleLogin = async () => {
-    try{
+    const { cookies } = this.props
 
+    try{
       const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
-        withCredentials: true,
+        params:{
+          jwt: cookies.get('jwt')
+        }
       })
 
-      if(res.status == 200){
+      // Does not work on Heroku
+      // const res = await axios.get(process.env.REACT_APP_SERVER_URL+'/get_info', {
+      //   withCredentials: true,
+      // })
+
+      if(res.status === 200){
         console.log("success get_info", res)
       }
 

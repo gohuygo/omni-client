@@ -25,7 +25,7 @@ class SignupModal extends Component {
         password: password,
       })
 
-      if(response.status == 200){
+      if(response.status === 200){
         this.handleClose()
       }
 

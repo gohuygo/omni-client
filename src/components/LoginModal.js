@@ -23,9 +23,10 @@ class LoginModal extends Component {
       const res = await axios.post(process.env.REACT_APP_SERVER_URL + '/login', {
         email: email,
         password: password,
+        name: name,
       })
 
-      if(res.status == 200){
+      if(res.status === 200){
         cookies.set('jwt', res.data.jwt)
         cookies.set('email', res.data.email)
         this.handleClose();

@@ -1,6 +1,6 @@
 ## Client
 
-  Client is hosted on Heroku - https://polar-dusk-27523.herokuapp.com/
+  Client is hosted on Heroku - http://polar-dusk-27523.herokuapp.com/
 
 ### Installation
 
